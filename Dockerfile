@@ -7,8 +7,7 @@ ENV PYTHONFAULTHANDLER=1 \
   PIP_NO_CACHE_DIR=off \
   PIP_DISABLE_PIP_VERSION_CHECK=on \
   PIP_DEFAULT_TIMEOUT=100 \
-  POETRY_VERSION=0.12.17
-  # POETRY_HOME=/opt/poetry \
+  POETRY_VERSION="1.0.0b2"
 
 RUN python /opt/get-poetry.py && mv $HOME/.poetry /opt/poetry
 ENV PATH="/opt/poetry/bin:${PATH}"
