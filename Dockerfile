@@ -1,5 +1,7 @@
-FROM python:3.7-slim
-ARG POETRY_VERSION="1.0.0b2"
+ARG IMAGE=python:3.7-slim
+
+FROM $IMAGE
+ARG POETRY_VERSION="1.0.0b3"
 ADD https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py /opt/get-poetry.py
 
 ENV PYTHONFAULTHANDLER=1 \
@@ -10,6 +12,6 @@ ENV PYTHONFAULTHANDLER=1 \
   PIP_DEFAULT_TIMEOUT=100 \
   POETRY_VERSION=$POETRY_VERSION
 
-RUN python /opt/get-poetry.py && mv $HOME/.poetry /opt/poetry
+RUN pip3 install --no-cache-dir --upgrade pip && python /opt/get-poetry.py && mv $HOME/.poetry /opt/poetry
 ENV PATH="/opt/poetry/bin:${PATH}"
 ENTRYPOINT ["poetry"]
